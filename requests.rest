@@ -1,0 +1,45 @@
+GET http://localhost:3000/
+
+###
+
+POST http://localhost:3000/signup
+content-type: application/json
+
+{
+    "userID":"user05",
+    "firstName":"fn",
+    "lastName":"ln",
+    "email":"emaivvdvdvl",
+    "password":"user05",
+    "contactNumber":"123",
+    "role":"0"
+}
+
+###
+
+POST http://localhost:3000/login 
+content-type: application/json
+
+{
+    "userID": "user04",
+    "password": "user04"
+}
+
+###
+
+GET http://localhost:3000/course
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvYmoiOiJ1c2VyMDQiLCJpYXQiOjE2OTM3NTU4NzcsImV4cCI6MTY5NDAxNTA3N30.XkRn5FTlGJPGB8JB53BKLbLEn2QROxt9jG52aHKqkNE
+
+###
+POST http://localhost:3000/course
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvYmoiOiJ1c2VyMDQiLCJpYXQiOjE2OTM3NTU4NzcsImV4cCI6MTY5NDAxNTA3N30.XkRn5FTlGJPGB8JB53BKLbLEn2QROxt9jG52aHKqkNE
+
+{
+    "courseID": "course002",
+    "courseName": "course ndncojldnc",
+    "courseDescription": "ebfuigeifgeouhfehf",
+    "courseContent": "ohopiwhdfwhdw",
+    "courseInstructor": "user02"
+}
