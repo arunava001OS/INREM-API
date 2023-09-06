@@ -1,3 +1,6 @@
+// user roles
+//student,course-admin,admin
+
 const User = class {
     constructor(obj){
         this.userID = obj.userID;
