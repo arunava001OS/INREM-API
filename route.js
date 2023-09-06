@@ -23,6 +23,7 @@ const signup = async (req,res) => {
         var userData = await userDB.doc(userObj.userID).get();
         if(userData.exists) {
             res.status(400).send("User is already present. Login");
+            return;
         } else {
             var userData = await userDB.doc(userObj.userID).set(JSON.parse(JSON.stringify(userObj)));
             res.cookie('jwt',token, {httpOnly:true});
@@ -52,9 +53,11 @@ const login = async (req,res) => {
                 })
             }else{
                 res.status(400).send("Incorrect Credentials");
+                return;
             }
         }else{
             res.status(400).send("User does not exist. Signup First");
+            return;
         }
     }catch(e){
         res.status(400).send(e);
