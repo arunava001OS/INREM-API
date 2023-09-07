@@ -6,13 +6,13 @@ POST http://localhost:3000/signup
 content-type: application/json
 
 {
-    "userID":"user10",
+    "userID":"user4",
     "firstName":"fn",
     "lastName":"ln",
     "email":"emaivvdvdvl",
-    "password":"user10",
-    "contactNumber":"123",
-    "role":"course-admin"
+    "password":"user4",
+    "contactNumber":"4",
+    "role":"student"
 }
 
 ###
