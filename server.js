@@ -18,14 +18,14 @@ const signup = async (req,res) => {
         //encrypt password
         const hashedPass = await bcrypt.hash(userObj.password,10);
         userObj.password = hashedPass;
-        const token = createToken(userObj.userID);
+        const token = createToken(userObj.contactNumber);
         const userDB = db.collection('User');
-        var userData = await userDB.doc(userObj.userID).get();
+        var userData = await userDB.doc(userObj.contactNumber).get();
         if(userData.exists) {
             res.status(400).send("User is already present. Login");
             return;
         } else {
-            var userData = await userDB.doc(userObj.userID).set(JSON.parse(JSON.stringify(userObj)));
+            var userData = await userDB.doc(userObj.contactNumber).set(JSON.parse(JSON.stringify(userObj)));
             res.cookie('jwt',token, {httpOnly:true});
             res.status(200).send({
                 "message": "User Created Successfully"
@@ -37,15 +37,15 @@ const signup = async (req,res) => {
 }
 
 const login = async (req,res) => {
-    const {userID,password} = req.body;
+    const {contactNumber,password} = req.body;
 
     try{
         const userDB = db.collection('User');
-        var userData = await userDB.doc(userID).get()
+        var userData = await userDB.doc(contactNumber).get()
         if(userData.exists){
             const matchpassword = await bcrypt.compare(password,userData.data().password);
             if(matchpassword){
-                const token = createToken(userID);
+                const token = createToken(contactNumber);
                 //const token = jwt.sign({id:userID},SECRET_KEY,{expiresIn: TOKEN_EXPIRY});
                 res.cookie('jwt',token, {httpOnly:true});
                 res.status(200).send({

@@ -20,5 +20,17 @@ app.post('/login',(req,res)=> login(req,res));
 app.get('/course', (req,res) => getAllCourses(req,res));
 app.post('/course',AuthMiddleWare(["course-admin","admin"]),(req,res) => upsertCourse(req,res))
 
+//todo
+/**
+ * get list of instructors
+ * get course by ID
+ * get courses enrolled by a user
+ * get courses by instructor
+ * 
+ * create batch
+ * enroll in batch
+ * 
+ */
+
 
 app.listen(3000);

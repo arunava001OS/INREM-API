@@ -7,7 +7,7 @@ const {fetchUser} = require('./util');
 
 const AuthMiddleWare = (roles) => {
     return async (req,res,next) => {
-        var userID = '';
+        var contactNumber = '';
         const authHeader =  req.headers["authorization"];
         if(authHeader == null){
             res.status(401).send({"message":"Auth Header Missing"});
@@ -21,11 +21,11 @@ const AuthMiddleWare = (roles) => {
                     return;
                 } else {
                     console.log("Successfully Verified: "+ JSON.stringify(decodedToken));
-                    userID = decodedToken.obj;
+                    contactNumber = decodedToken.obj;
                 }
             })
         }
-        var user = await fetchUser(userID);
+        var user = await fetchUser(contactNumber);
         if(!roles.includes(user.role)){
             res.status(401).send({"message":"You do not have permission to perform this action"});
             return;
